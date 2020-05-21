@@ -13,23 +13,21 @@
     <link rel="stylesheet" href="style/post.css">
     <title>Home <?php echo $_SESSION['email']; ?></title>
 </head>
+<?php include 'header.php'; ?>
 <body>
     
-    <?php include 'header.php'; ?>
-    <h1>Welcome Home <?php echo $_SESSION['email']; ?></h1>
-    <div class='post-form'>
+    
+    <form class='post-form'>
         <p id='post-guide'></p>
-        <input type="text" name='content' id='post-field'> </input> 
-        <input type="hidden" name='user' value='<?php $_SESSION['email'] ?>'>
-        <button type='submit' name='postSubmit' value='Submit' id='post-btn'>Post</button>
-    </div>
+        <textarea type="text" name='content' id='post-field' class='form-control'> </textarea> 
+        <button type='submit' name='postSubmit' value='Submit' id='post-btn' class='btn btn-primary'>Post</button>
+    </form>
 
     <section class = 'feed-container'>  </section>
 
     <?php 
         require 'database/connect.php';
-        //require 'comments/getComment.php';
-        //require 'comments/writeComment.php';
+        include 'function/formatTime.php';
         
 
         $sql = "select firstname, lastname, content, post.reg_date, post.id  from post, user where post.user = user.email ORDER BY post.reg_date desc";
@@ -40,26 +38,34 @@
             // output data of each row
             while($row = $result->fetch_assoc()) {?>
                 
-                    <div class='post-container'>
+                    <div class='post-container' >
                         <div class='user-date'>
                             <p class='font-weight-bold' ><?php echo $row['firstname'] ?> <?php echo $row['lastname'] ?></p>
-                            <p><?php echo $row['reg_date'] ?></p>
+                            <p><?php echo  formatTime($row['reg_date']); ?></p>
                         </div>
-                        <div class='content-container'>
-                            <?php echo $row['content'] ?>
+                        <div class='content-container'><p><?php echo $row['content'] ?></p>
                         </div>
-                        <div class='comment-section' style='display: flex; flex-direction:column;'>
-                            <div>
-                                <input type="hidden" name='commentParent' value='<?php echo $row['id'] ?>' >
-                                <button type='submit' name='commentSubmit' value='Submit'>Comments</button>
+                        
+                        <div  style='display: flex; flex-direction:column; width:100%; align-items:center;'>
+                            <div id='<?php echo $row['id'] ?>'  style='display:flex; flex-direction:column; align-items:center; width:100%;'>                                
                                 
                             </div>
-                            <?php require 'comments/getComment.php'; ?>
-                            <div>
-                                <input type="hidden" name='commentParent' value='<?php echo $row['id'] ?>' >
-                                <input type="" name='commentContent' value='' >
-                                <button type='submit' name='postCommentSubmit' value='Submit'>write</button>
-                            </div>                        
+                            <div class='like-comment'>
+                                <span class="heart" value='<?php echo $row['id'] ?>' onclick='heart()' id='<?php echo $row['id'] ?>'></span>
+
+                                <button type='submit' name='commentSubmit' value='<?php echo $row['id'] ?>' onclick='likePost()' class='btn btn-primary ' id=''>Like</button>
+                                <button type='submit' name='commentSubmit' value='<?php echo $row['id'] ?>' onclick='commentSubmit()' class='btn btn-info ' id='comment-btn'>Comments</button>
+                            </div>
+                            
+                           
+                                
+                            <form class='comment-input'>                                
+                                <input type="" name='commentContent' value='' id='write<?php echo $row['id'] ?>' class='form-control'>
+                                <button type='submit' name='postCommentSubmit' value='<?php echo $row['id'] ?>' onclick='writeComment()'class='btn btn-primary'>Write</button>
+                            </form> 
+                            
+                            
+                                                   
                         </div>
                         
                     </div>

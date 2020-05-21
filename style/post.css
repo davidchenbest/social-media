@@ -1,20 +1,24 @@
 
+body{
+    margin:0;
+    padding:0;
+}
+
 .post-container{
     display: flex;
     flex-direction: column;
     border: 3px solid grey;
     width: 600px;
-    align-items: center;
-    height: 200px;
+    align-items: center;    
     margin: auto;
-    padding: 6px;
-    margin-bottom: 10px;
+    padding:10px 15px 10px 15px;
+    margin-bottom: 20px;
 }
 
 .user-date{
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     
     
     
@@ -22,10 +26,13 @@
 }
 .content-container{
     border: 1px solid lightgrey;
-    width: 90%;
-    padding: 6px;
-    margin-bottom: 6px;
-    flex-grow: 1;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    min-height: 100px;
+    word-wrap: break-word;
+    
+    
     
 
     
@@ -33,8 +40,15 @@
     
 }
 
+#welcome-head{
+    font-size: 30px;
+    font-weight: bolder;
+    
+}
+
 .post-form{
     margin:auto;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,12 +57,103 @@
 
 }
 
-.post-form input{
+.post-form textarea{
     padding: 0;
     width: 100%;
     height: 100px;
+    margin-bottom: 2px;
+    padding: 5px;
+    word-wrap: break-word;
 }
 .post-form button{
     margin-right: auto;
 }
 
+.comment-container{
+     width: 90%;
+    border-radius:14px; 
+    background-color:#dcf0fc;
+    margin: 5px;
+    padding:5px 10px;
+}
+
+#comment-header{
+    display: flex; 
+    justify-content:space-between;
+     width:100%; 
+     padding:5px 10px;
+}
+
+#comment-header #bold{
+    font-weight:700;
+}
+
+#comment-content{
+    padding:5px 15px
+}
+ 
+ .like-comment{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     
+     
+ }
+
+ .like-comment button{
+    width: 90px;
+    
+    margin:0 5px 5px 5px;
+    font-size: 14px;
+}
+
+#post-btn{
+    width: 100%;
+    padding: 5px;
+}
+
+.comment-input{
+    display: flex;
+    justify-content: center;
+    
+    width: 90%;
+}
+
+.comment-input input{
+    flex-grow: 1;
+}
+
+.comment-input button{
+    margin-left: 1px;
+}
+
+.heart {
+    background-color: grey;
+    display: inline-block;
+    height: 1em;
+    margin: 0 10px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    width: 1em;
+  }
+  
+  .heart:before,
+  .heart:after {
+    content: "";
+    background-color: grey;
+    border-radius: 50%;
+    height: 1em;
+    position: absolute;
+    width: 1em;
+  }
+  
+  .heart:before {
+    top: -.5em;
+    left: 0;
+  }
+  
+  .heart:after {
+    left: .5em;
+    top: 0;
+  }

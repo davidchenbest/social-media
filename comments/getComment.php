@@ -1,21 +1,34 @@
 <?php 
-    require 'database/connect.php';
+    require '../database/connect.php';
+    require '../session.php';
+    require '../function/formatTime.php';
+    
 
-    if(isset($_POST['commentSubmit'])){
-        $commentParent = $_POST['commentParent'];
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+        $sql = "select firstname, lastname, content, comment.reg_date from comment, user where comment.user = user.email and comment.parent_id={$id} ";
 
-        $sql = "SELECT * FROM comment where parent_id = {$commentParent}";
         $result = $conn->query($sql);
 
+        
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) { ?>
-                 <h1> user:   <?php echo $row["user"] ?>  content:  <?php echo $row["content"] ?> </h1>
-            <?php    
+                <div class='comment-container'>
+                    <div id='comment-header'>
+                        <span id='bold' ><?php echo $row['firstname'] ?> <?php echo $row['lastname'] ?></span>
+                        <span><?php echo  formatTime($row['reg_date']); ?></span>                        
+                    </div>
+                    <div id='comment-content'>
+                        <span><?php echo $row['content'] ?></span>
+                    </div>
+                </div>
+
+                <?php
             }
         }
-
-
-        unset($_POST['commentSubmit']);
+        else{
+            echo 'No comments.';
+        }
     }
 ?>

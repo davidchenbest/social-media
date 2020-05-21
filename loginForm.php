@@ -18,7 +18,7 @@
                 }
                 else{
                     require 'database/connect.php';
-                $sql = "SELECT email,password FROM user where email ='{$email}' AND password='{$password}'";
+                    $sql = "SELECT email,password FROM user where email ='{$email}' AND password='{$password}'";
                     $result = $conn->query($sql);
         
                     if ($result->num_rows > 0) {
@@ -44,6 +44,16 @@
         if(!array_filter($error)){
             session_start();
             $_SESSION['email'] = $email;
+            $sql = "select firstname, lastname from user where user.email ='{$_SESSION['email']}' ";
+            $result = $conn->query($sql);
+        
+                if ($result->num_rows > 0) {                
+                    $row = $result->fetch_assoc();
+                    $_SESSION['firstname'] = $row['firstname'];
+                    $_SESSION['lastname'] = $row['lastname'];
+                }        
+
+            $conn->close();
             
             header('Location: home.php');
         }

@@ -5,7 +5,9 @@
         
         $content = $_POST['content'];
         $user = $_SESSION['email'];
-        if(strlen($content) > 1){
+
+
+        if(strlen(trim($content)) > 0){
             require 'database/connect.php';
 
             $sql = "INSERT INTO post (content, user)
@@ -34,10 +36,10 @@
                             <div class='comment-section' style='display: flex; flex-direction:column;'>
                                 <div >
                                     <input type="hidden" name='commentParent' value='<?php echo $row['max(id)'] ?>' >
-                                    <button type='submit' name='commentSubmit' value='Submit'>Comments</button>
+                                    <button type='submit' name='commentSubmit' value='Submit' >Comments</button>
                                     
                                 </div>
-                                <?php require 'comments/getComment.php'; ?>
+                                
                                 <div  >
                                     <input type="hidden" name='commentParent' value='<?php echo $row['max(id)'] ?>' >
                                     <input type="" name='commentContent' value='' >
