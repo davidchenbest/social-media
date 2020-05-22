@@ -51,9 +51,10 @@
                                 
                             </div>
                             <div class='like-comment'>
-                                <span class="heart" value='<?php echo $row['id'] ?>' onclick='heart()' id='<?php echo $row['id'] ?>'></span>
-
-                                <button type='submit' name='commentSubmit' value='<?php echo $row['id'] ?>' onclick='likePost()' class='btn btn-primary ' id=''>Like</button>
+                                <!-- <span class="heart" value='<?php echo $row['id'] ?>' onclick='heart()' id='<?php echo $row['id'] ?>'></span>
+                                <button type='submit' name='commentSubmit' value='<?php echo $row['id'] ?>' onclick='likePost()' class='btn btn-primary ' id=''>Like</button> -->
+                                <!-- <img src='pictures/heart.png' alt='liked' style='height:2em ; color:red;' value='<?php echo $row['id'] ?>' onclick='heart()'> -->
+                                <?php require 'post/getLikes.php' ?>
                                 <button type='submit' name='commentSubmit' value='<?php echo $row['id'] ?>' onclick='commentSubmit()' class='btn btn-info ' id='comment-btn'>Comments</button>
                             </div>
                             

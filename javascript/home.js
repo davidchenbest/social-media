@@ -111,20 +111,16 @@ function likePost(){
 
 function heart(){
   let id = event.target;
+  console.log(id.innerHTML);
+  
   let action;
   let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = async function() {
       if (this.readyState == 4 && this.status == 200) {        
         action = await  this.responseText.trim();
-        if(action =='liked'){
+        if(action =='deleted') {id.src='pictures/heart.png' ;}
+        else {id.src='pictures/likedHeart.png'}
           
-          id.style.backgroundColor='red'
-          
-        }
-        else{id.style.backgroundColor='grey'}   
-            
-      
-              
       }
     };
     xhttp.open("POST", "post/likePost.php", true);
@@ -132,3 +128,7 @@ function heart(){
     xhttp.send(`id=${id.getAttribute('value')}`);
     
 }
+
+
+
+

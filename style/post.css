@@ -127,33 +127,3 @@ body{
     margin-left: 1px;
 }
 
-.heart {
-    background-color: grey;
-    display: inline-block;
-    height: 1em;
-    margin: 0 10px;
-    position: relative;
-    top: 0;
-    transform: rotate(-45deg);
-    width: 1em;
-  }
-  
-  .heart:before,
-  .heart:after {
-    content: "";
-    background-color: grey;
-    border-radius: 50%;
-    height: 1em;
-    position: absolute;
-    width: 1em;
-  }
-  
-  .heart:before {
-    top: -.5em;
-    left: 0;
-  }
-  
-  .heart:after {
-    left: .5em;
-    top: 0;
-  }
