@@ -1,7 +1,8 @@
 <div class='navbar'> 
-    <p id='logo'>Social</p>
+    <a href='home.php' id='logo'>Social</a>
     <a href='#' id='greet'>Hello <?php  echo $_SESSION['firstname']. ' '. $_SESSION['lastname']?> </a>
-    <a href="logout.php" id='logout'>Logout</a>
+    <?php require 'user-nav.php' ?>
+    
 </div>
 
     <style>
@@ -16,6 +17,7 @@
             top:0;
             margin:0;
             padding:0 15px;
+            justify-content: space-between;
             
 
 
@@ -24,8 +26,9 @@
             font-size:30px;
             font-weight:700;
             padding:0;            
-           
+            color:white;
             margin:0;
+            width:33%;
             
         }
         #greet{
@@ -35,19 +38,15 @@
             font-weight:700;
             text-decoration: none;
             color:white;
+            text-align: center !important;
             
+            width:33%;
            
             
         }
-        .navbar #logout{
-            color:white;
-            padding:0;
-            margin:0;
-            text-decoration: none;
-            
-        }
-        .navbar #logout:hover{
-            color:yellow;
+
+        a{
+            text-decoration: none !important;
         }
 
         

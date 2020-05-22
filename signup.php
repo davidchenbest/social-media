@@ -2,9 +2,9 @@
     $email = $first = $last = $password = $confirmPassword = '';
     $error = array('email'=>'', 'first'=>'', 'last'=>'', 'password'=>'', 'confirmPassword'=>'');
     if(isset($_POST['submit'])){
-        $email = $_POST['email'];
-        $first = $_POST['first'];
-        $last = $_POST['last'];
+        $email = strtolower($_POST['email']);
+        $first = strtolower($_POST['first']);
+        $last = strtolower($_POST['last']);
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirmPassword'];
         
@@ -96,11 +96,11 @@
     </div>
     <div class='form-group'>
         <label for="password">Password: </label> <span id= 'error-msg'><?php echo $error['password'] ?></span> <br>
-        <input type="text" name='password'value=<?php echo htmlspecialchars($password) ?>>
+        <input type="password" name='password'value=<?php echo htmlspecialchars($password) ?>>
     </div>
     <div class='form-group'>
         <label for="confirmPassword">confirmPassword: </label> <span id= 'error-msg'><?php echo $error['confirmPassword'] ?></span> <br>
-        <input type="text" name='confirmPassword'value=<?php echo htmlspecialchars($confirmPassword) ?>>
+        <input type="password" name='confirmPassword'value=<?php echo htmlspecialchars($confirmPassword) ?>>
     </div>
     
     <div class='form-group'>

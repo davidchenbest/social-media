@@ -2,7 +2,7 @@
     $email = $password = $confirmPassword ='';
     $error = array('email'=>'', 'password'=>'');
     if(isset($_POST['submit'])){
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $password = $_POST['password'];
         
         if(empty($_POST['email'])){
@@ -49,8 +49,8 @@
         
                 if ($result->num_rows > 0) {                
                     $row = $result->fetch_assoc();
-                    $_SESSION['firstname'] = $row['firstname'];
-                    $_SESSION['lastname'] = $row['lastname'];
+                    $_SESSION['firstname'] = ucfirst($row['firstname']);
+                    $_SESSION['lastname'] = ucfirst($row['lastname']);
                 }        
 
             $conn->close();
@@ -71,7 +71,7 @@
     </div>    
     <div class='form-group'>
         <label for="password">Password: </label> <span id='error-msg'> <?php echo $error['password'] ?> </span> <br>
-        <input type="text" name='password'value=<?php echo htmlspecialchars($password) ?>>
+        <input type="password" name='password'value=<?php echo htmlspecialchars($password) ?>>
     </div>
     
     <div class='form-group'>

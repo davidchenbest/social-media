@@ -1,6 +1,7 @@
 <?php 
     require '../database/connect.php';
     require '../session.php';
+    include '../function/formatTime.php';
 
     if(isset($_POST['content']) && isset($_POST['id'])){
         $content = $_POST['content'];        
@@ -18,7 +19,7 @@
                         <div class='comment-container'>
                             <div id='comment-header'>
                                 <span ><?php echo $row['firstname'] ?> <?php echo $row['lastname'] ?></span>
-                                <span><?php echo $row['reg_date'] ?></span>                        
+                                <span><?php echo  formatTime($row['reg_date']); ?></span>                        
                             </div>
                             <div id='comment-content'>
                                 <span><?php echo $row['content'] ?></span>

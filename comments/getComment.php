@@ -27,8 +27,6 @@
                 <?php
             }
         }
-        else{
-            echo 'No comments.';
-        }
+        
     }
 ?>
