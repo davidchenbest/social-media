@@ -1,5 +1,7 @@
 <div class='navbar'> 
-    <a href='home.php' id='logo'>Social</a>
+    <div class='logo-con'><a href='home.php' id='logo'>Social</a> <?php require 'search.php' ?></div>
+    
+   
     <a href='#' id='greet'>Hello <?php  echo $_SESSION['firstname']. ' '. $_SESSION['lastname']?> </a>
     <?php require 'user-nav.php' ?>
     
@@ -22,13 +24,21 @@
 
 
         }
+        .logo-con{
+            padding:0;
+            margin:0;
+            width:33%;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
         #logo{
             font-size:30px;
             font-weight:700;
-            padding:0;            
+                        
             color:white;
-            margin:0;
-            width:33%;
+            
+            
             
         }
         #greet{

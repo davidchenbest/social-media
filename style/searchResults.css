@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    margin-top: 60px;
+    padding:0;
+    
+}
+
+.result-con{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#userSubmit{
+    background: none;
+    border: none;
+    padding:0;
+    font-size: 1em;
+}
